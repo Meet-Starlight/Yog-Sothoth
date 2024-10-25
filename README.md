@@ -7,8 +7,8 @@
 </p>
   
 为[Yunzai-Bot V3](https://gitee.com/Le-niao/Yunzai-Bot)提供的犹格索托斯的庭院同人文游
-如出现插件报错或功能不适配等情况请及时联系[作者](https://gitee.com/tu-zhengxiong0925)
-参与贡献请Fock本仓库修改代码后发起[Pull Request](https://gitee.com/tu-zhengxiong0925/help-plugin/pulls)  
+如出现插件报错或功能不适配等情况请及时联系[作者](https://github.com/Meet-Starlight)
+参与贡献请Fock本仓库修改代码后发起[Pull Request](https://github.com/Meet-Starlight/Yog-Sothoth/pulls)  
 如果你对本仓库表示支持，请点点你手中的Star
 ## 联系我
 
