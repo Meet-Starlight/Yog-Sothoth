@@ -1,4 +1,4 @@
-# <div align="center">help-plugin</div>
+# <div align="center">犹格索托斯插件</div>
 
 <p align="center">
   </a>
