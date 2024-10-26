@@ -1,19 +1,24 @@
 // 神谕占卜
-import fs from 'fs';
+import puppeteer from "../../../lib/puppeteer/puppeteer.js";
+import { resources } from "../model/path.js";
+import fs from "fs";
+
 export class example extends plugin {
   constructor() {
     super({
-      name: "CG",
-      dsc: "随机CG",
+      name: "神谕",
+      dsc: "随机神谕",
       event: "message",
       priority: -100,
-      rule: [
-        { reg: "#神谕占卜", fnc: "divination" },
-      ],
+      rule: [{ reg: "#神谕占卜", fnc: "divination" }],
     });
 
+    // 加载 JSON 文件
     this.cards = JSON.parse(
-      fs.readFileSync("C:\\Users\\Administrator\\Desktop\\wuyi\\yunzai\\Yunzai\\plugins\\Yog-Sothoth\\config\\神谕.json", "utf-8")
+      fs.readFileSync(
+        `C:/Users/Administrator/Desktop/wuyi/yunzai/Yunzai/plugins/Yog-Sothoth/config/神谕.json`,
+        "utf-8"
+      )
     );
     this.selectedDivinations = [];
   }
@@ -36,16 +41,28 @@ export class example extends plugin {
         selectedCards.push(card);
       }
     }
+    const card = selectedCards[0]; 
 
-    setTimeout(() => {
-      let response = "";
-      selectedCards.forEach((card, index) => {
-        response += `${index + 1}: 卡牌名 ${card.name}\n效果 ${
-          card.Effect
-        }\n描述 ${card.Description}\n\n`;
-      });
-      e.reply(response);
-    }, 1000);
+    // 准备渲染数据
+    const data = {
+      name: card.name,
+      text: card.Effect,
+      span: card.main,
+      data: card.Description,
+      img: card.img,
+    };
+
+    //截取渲染后的HTML页面截图
+    let img = await puppeteer.screenshot("神谕占卜图", {
+      tplFile: `C:/Users/Administrator/Desktop/wuyi/yunzai/Yunzai/plugins/Yog-Sothoth/resources/HTML/zhanbu.html`,
+      // tplFile: `${resources}/HTML/zhanbu.html`,
+      imgType: "png",
+      quality: 100,
+      data: data,
+    });
+
+    // 发送截图
+    await e.reply(img);
   }
 
   getAvailableCards() {
