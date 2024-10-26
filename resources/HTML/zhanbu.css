@@ -1,0 +1,63 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.wrap {
+    display: flex;
+}
+
+.box {
+    position: relative;
+    background-image: url(../htmlimg/2.png);
+    background-repeat: no-repeat;
+    width: 254px;
+    height: 480px;
+    padding: 10px;
+}
+
+.btn {
+    position: relative;
+    display: inline-block;
+    background-image: url(../htmlimg/1.png);
+    width: 236px;
+    height: 234px;
+    z-index: 10;
+}
+
+.iename {
+    display: inline;
+    position: relative;
+    left: 50px;
+    top: 205px;
+    color: #ffffff;
+
+}
+
+
+.imgas {
+    position: absolute;
+    background-size: contain;
+    top: 10px;
+    left: 12px;
+    width: 234px;
+    height: 232px;
+    z-index: 1;
+}
+
+.xian {
+    background-color: #fff;
+    height: 1px;
+    width: 236px;
+}
+
+.span {
+    width: 235px;
+    word-wrap: break-word;
+    margin-top: 3px;
+    margin-bottom: 5px;
+}
+
+span {
+    color: #fff700;
+}
