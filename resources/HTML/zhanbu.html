@@ -4,22 +4,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="C:/Users/Administrator/Desktop/wuyi/yunzai/Yunzai/plugins/Yog-Sothoth/resources/HTML/zhanbu.css">
-    <script src="../../apps/zhanbu.js"></script>
+    <link rel="stylesheet"
+        href="C:/Users/Administrator/Desktop/wuyi/yunzai/Yunzai/plugins/Yog-Sothoth/resources/HTML/zhanbu.css">
 </head>
 
 <body>
-    <div class="wrap">
+    <div class="wrap" id="container">
+        {{ each data.cards }}
         <div class="box">
             <div class="btn">
-                <div class="iename">{{name}}</div>
+                <div class="iename">{{$value.name}}</div>
             </div>
-            <img class="imgas" src="{{img}}" alt="">
-            <div class="span">{{text}}<span>{{span}}</span></div>
+            <img class="imgas" src="" alt="">
+            <div class="span">{{$value.text}}<span>{{$value.span}}</span></div>
             <div class="xian"></div>
-            <div class="span">{{data}}</div>
+            <div class="span">{{$value.data}}</div>
         </div>
+        {{ /each }}
     </div>
+    <script>
+        let imageList = [
+            "C:/Users/Administrator/Desktop/wuyi/yunzai/Yunzai/plugins/Yog-Sothoth/resources/htmlimg/3.png",
+            "C:/Users/Administrator/Desktop/wuyi/yunzai/Yunzai/plugins/Yog-Sothoth/resources/htmlimg/4.png",
+            "C:/Users/Administrator/Desktop/wuyi/yunzai/Yunzai/plugins/Yog-Sothoth/resources/htmlimg/5.png",
+            "C:/Users/Administrator/Desktop/wuyi/yunzai/Yunzai/plugins/Yog-Sothoth/resources/htmlimg/6.png",
+            "C:/Users/Administrator/Desktop/wuyi/yunzai/Yunzai/plugins/Yog-Sothoth/resources/htmlimg/7.png",
+        ];
+
+        const images = document.querySelectorAll('img.imgas');
+
+        if (images.length > imageList.length) {
+            console.error("图片数量不足");
+        } else {
+            images.forEach(img => {
+                const randomIndex = Math.floor(Math.random() * imageList.length);
+                img.src = imageList[randomIndex];
+                imageList.splice(randomIndex, 1);
+            });
+        }    
+    </script>
 </body>
 
 </html>

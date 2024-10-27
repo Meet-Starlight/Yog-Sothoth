@@ -1,6 +1,5 @@
-// 神谕占卜
 import puppeteer from "../../../lib/puppeteer/puppeteer.js";
-import { resources } from "../model/path.js";
+import { resources } from '../model/path.js';
 import fs from "fs";
 
 export class example extends plugin {
@@ -41,15 +40,18 @@ export class example extends plugin {
         selectedCards.push(card);
       }
     }
-    const card = selectedCards[0]; 
 
     // 准备渲染数据
     const data = {
-      name: card.name,
-      text: card.Effect,
-      span: card.main,
-      data: card.Description,
-      img: card.img,
+      cards: selectedCards.map((card) => {
+        return {
+          name: card.name,
+          text: card.Effect,
+          span: card.main,
+          data: card.Description,
+          // img: card.img,
+        };
+      }),
     };
 
     //截取渲染后的HTML页面截图
